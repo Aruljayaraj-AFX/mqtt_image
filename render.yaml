@@ -1,10 +1,19 @@
 services:
   - type: web
-    name: rabbitmq
+    name: rabbitmq-ui
     env: docker
     plan: free
-    region: oregon
     dockerfilePath: ./Dockerfile
     ports:
-      - 15672:15672  # Management UI
-      - 5672:5672    # AMQP port
+      - port: 15672
+        name: http
+        protocol: tcp
+
+  - type: private_service
+    name: rabbitmq-amqp
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    ports:
+      - port: 5672
+        protocol: tcp
