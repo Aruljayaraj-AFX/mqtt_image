@@ -1,3 +1,7 @@
-FROM rabbitmq:3-management
-RUN rabbitmq-plugins enable --offline rabbitmq_mqtt
-COPY rabbitmq.conf /etc/rabbitmq/rabbitmq.conf
+FROM eclipse-mosquitto:2.0
+
+# Mosquitto default port is 1883 (TCP)
+EXPOSE 1883
+
+# Run Mosquitto with default config
+CMD ["/usr/sbin/mosquitto", "-c", "/mosquitto/config/mosquitto.conf"]
