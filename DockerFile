@@ -1,7 +1,4 @@
 FROM eclipse-mosquitto:2.0
 
-# Mosquitto default port is 1883 (TCP)
-EXPOSE 1883
-
-# Run Mosquitto with default config
-CMD ["/usr/sbin/mosquitto", "-c", "/mosquitto/config/mosquitto.conf"]
+# Copy config if you have one
+COPY mosquitto.conf /mosquitto/config/mosquitto.conf
