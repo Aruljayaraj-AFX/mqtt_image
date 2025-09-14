@@ -2,7 +2,7 @@ FROM eclipse-mosquitto:2.0
 
 COPY mosquitto.conf /mosquitto/config/mosquitto.conf
 
-# Install Python for a tiny HTTP server
+# Install Python to run a simple HTTP server
 RUN apt-get update && apt-get install -y python3
 
 # Run both Mosquitto and HTTP server
